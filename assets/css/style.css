@@ -1885,3 +1885,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .timeline-text a:hover { color: var(--orange-yellow-crayola); }
+.resume > .timeline-item::before,
+.resume > .timeline-item::after {
+  display: none;
+}
