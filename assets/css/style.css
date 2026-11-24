@@ -59,8 +59,8 @@
   --jet: hsl(224, 53%, 43%);
   --onyx: hsl(341, 100%, 97%);
   --eerie-black-1: hsl(204, 46%, 25%);
-  --eerie-black-2: hsl(330, 100%, 96%);
-  --smoky-black: hsl(0, 0%, 7%);
+  --eerie-black-2: hsl(0, 0%, 100%);
+  --smoky-black: hsl(330, 100%, 98%);
   --white-1: hsl(224, 82%, 15%);
   --white-2: hsl(224, 82%, 15%);
   --orange-yellow-crayola: hsl(207, 93%, 84%);
@@ -459,7 +459,7 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: hsla(0, 0%, 100%, 0.75);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
