@@ -1890,5 +1890,5 @@ textarea.form-input::-webkit-resizer { display: none; }
   display: none;
 }
 .service-icon-box img {
-  filter: filter: brightness(0);
+  filter: filter brightness(0);
 }
