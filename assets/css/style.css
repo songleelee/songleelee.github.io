@@ -1889,3 +1889,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 .resume > .timeline-item::after {
   display: none;
 }
+.service-icon-box img {
+  filter: filter: brightness(0);
+}
