@@ -157,3 +157,28 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+/* 메뉴별 프로필 사진 바꾸기 */
+const avatarImg = document.querySelector(".avatar-box img");
+const defaultAvatar = "./assets/images/my-avatar.png";
+
+const avatarByPage = {
+  about: "./assets/images/my-avatar.png",
+  resume: "./assets/images/avatar-resume.png",
+  portfolio: "./assets/images/avatar-portfolio.png",
+  blog: "./assets/images/avatar-blog.png",
+  contact: "./assets/images/avatar-contact.png"
+};
+
+/* 미리 불러와서 바뀔 때 깜빡임 방지 */
+Object.values(avatarByPage).forEach(function (src) {
+  new Image().src = src;
+});
+
+document.querySelectorAll("[data-nav-link]").forEach(function (link) {
+  link.addEventListener("click", function () {
+    const page = link.textContent.trim().toLowerCase();
+    if (avatarImg) {
+      avatarImg.src = avatarByPage[page] || defaultAvatar;
+    }
+  });
+});
