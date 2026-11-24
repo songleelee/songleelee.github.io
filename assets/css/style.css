@@ -1879,4 +1879,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+}.timeline-text a {
+  color: var(--light-gray);
+  text-decoration: underline;
 }
+
+.timeline-text a:hover { color: var(--orange-yellow-crayola); }
