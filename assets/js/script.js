@@ -196,4 +196,64 @@ document.querySelectorAll("[data-filter-btn], [data-select-item]").forEach(funct
   });
 });
 
+// Kookmin Review 호별 기사 뷰어
+(function () {
+  const ISSUES = {
+    "300": { title: "No.300 · Mar 11, 2024", pages: ["r300-p1.jpg","r300-p2.jpg","r300-p3.jpg","r300-p4-5.jpg","r300-p6.jpg","r300-p7.jpg","r300-p8.jpg"] },
+    "301": { title: "No.301 · Apr 8, 2024",  pages: ["r301-p1.jpg","r301-p2.jpg","r301-p3.jpg","r301-p4.jpg","r301-p5.jpg","r301-p6.jpg","r301-p7.jpg","r301-p8.jpg"] },
+    "302": { title: "No.302 · May 27, 2024", pages: ["r302-p1.jpg","r302-p2.jpg","r302-p3.jpg","r302-p4.jpg","r302-p5.jpg","r302-p6.jpg","r302-p7.jpg","r302-p8.jpg"] },
+    "303": { title: "No.303 · Sep 9, 2024",  pages: ["r303-p1.jpg","r303-p2.jpg","r303-p3.jpg","r303-p4.jpg","r303-p5.jpg","r303-p6.jpg","r303-p7.jpg","r303-p8.jpg"] },
+    "304": { title: "No.304 · Oct 7, 2024",  pages: ["r304-p1.jpg","r304-p2.jpg","r304-p3.jpg","r304-p4-5.jpg","r304-p6.jpg","r304-p7.jpg","r304-p8.jpg"] },
+    "305": { title: "No.305 · Nov 25, 2024", pages: ["r305-p1.jpg","r305-p2.jpg","r305-p3.jpg","r305-p4.jpg","r305-p5.jpg","r305-p6.jpg","r305-p7.jpg","r305-p8.jpg"] }
+  };
+  const DIR = "./assets/images/review/";
+  const modal = document.getElementById("rvModal");
+  if (!modal) return;
+  const img = document.getElementById("rvImg");
+  const title = document.getElementById("rvTitle");
+  const count = document.getElementById("rvCount");
+  const prev = document.getElementById("rvPrev");
+  const next = document.getElementById("rvNext");
+  let cur = null, idx = 0;
+
+  function show() {
+    const pages = ISSUES[cur].pages;
+    img.src = DIR + pages[idx];
+    img.alt = ISSUES[cur].title + " page " + (idx + 1);
+    count.textContent = (idx + 1) + " / " + pages.length;
+    prev.disabled = idx === 0;
+    next.disabled = idx === pages.length - 1;
+    modal.querySelector(".rv-stage").scrollTop = 0;
+  }
+  function openIssue(n) {
+    if (!ISSUES[n]) return;
+    cur = n; idx = 0;
+    title.textContent = "The Kookmin Review " + ISSUES[n].title;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    show();
+  }
+  function closeViewer() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  document.addEventListener("click", function (e) {
+    const card = e.target.closest(".rv-open");
+    if (card) { e.preventDefault(); openIssue(card.dataset.issue); }
+  });
+  prev.addEventListener("click", function () { if (idx > 0) { idx--; show(); } });
+  next.addEventListener("click", function () {
+    if (idx < ISSUES[cur].pages.length - 1) { idx++; show(); }
+  });
+  document.getElementById("rvClose").addEventListener("click", closeViewer);
+  modal.addEventListener("click", function (e) { if (e.target === modal) closeViewer(); });
+  document.addEventListener("keydown", function (e) {
+    if (!modal.classList.contains("open")) return;
+    if (e.key === "Escape") closeViewer();
+    if (e.key === "ArrowLeft") prev.click();
+    if (e.key === "ArrowRight") next.click();
+  });
+})();
   

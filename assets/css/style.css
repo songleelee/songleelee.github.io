@@ -2056,3 +2056,34 @@ textarea.form-input::-webkit-resizer { display: none; }
   .project-img { height: 220px; }
 }
 
+/* Kookmin Review 호별 뷰어 */
+.rv-open .project-img img { object-fit: cover; object-position: top; }
+.rv-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  background: hsla(224, 82%, 10%, 0.94);
+  display: none; flex-direction: column; align-items: center;
+}
+.rv-modal.open { display: flex; }
+.rv-top {
+  width: 100%; display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; color: #fff; font-size: 15px;
+}
+.rv-title { font-weight: 600; flex: 1; }
+.rv-count { opacity: .75; }
+.rv-close {
+  background: none; border: 0; color: #fff; font-size: 22px; cursor: pointer; padding: 4px 8px;
+}
+.rv-stage { flex: 1; width: 100%; overflow: auto; text-align: center; padding: 0 56px 20px; }
+.rv-stage img {
+  display: inline-block; max-width: 100%; max-height: 100%;
+  object-fit: contain; border-radius: 6px; background: #fff;
+}
+.rv-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 64px; background: hsla(0,0%,100%,.14); color: #fff;
+  border: 0; font-size: 32px; cursor: pointer; border-radius: 10px;
+}
+.rv-prev { left: 8px; } .rv-next { right: 8px; }
+.rv-nav:disabled { opacity: .25; cursor: default; }
+@media (max-width: 580px) { .rv-stage { padding: 0 8px 16px; } .rv-nav { width: 34px; height: 52px; } }
+
