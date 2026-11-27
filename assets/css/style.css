@@ -1967,57 +1967,32 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   /* ===== Portfolio 전체 스타일 ===== */
 
-/* 기존 필터 버튼은 숨김 (HTML은 남겨둬야 스크립트 오류가 안 남) */
-.portfolio .filter-list,
-.portfolio .filter-select-box { display: none; }
+  /* ===== Portfolio: 탭 설명, 배지, 영상, 다른 플랫폼 아이콘 ===== */
 
-/* 파트 구분 */
-.pf-group + .pf-group {
-  margin-top: 40px;
-  padding-top: 30px;
-  border-top: 1px solid hsl(330, 60%, 90%);
-}
-.pf-title { margin-bottom: 8px; }
-.pf-sub { color: var(--white-2); margin-bottom: 6px; }
-.pf-sub-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
+/* 탭별 설명: 선택된 것만 보임 */
+.pf-desc-box { margin-bottom: 22px; }
 .pf-desc {
+  display: none;
   color: var(--light-gray);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
-  margin-bottom: 22px;
 }
+.pf-desc.active { display: block; }
 
-/* 디깅클럽 캠페인 패널 */
-.pf-feature {
-  background: hsl(330, 100%, 97%);
-  border: 1px solid hsl(330, 60%, 88%);
-  border-radius: 18px;
-  padding: 22px;
-  margin-bottom: 32px;
-}
-.pf-feature .pf-desc { margin-bottom: 18px; }
-.pf-feature .pf-alt-btn:not(.pf-red) { background: hsl(0, 0%, 100%); }
-
-/* "Campaign" 태그와 "NAVER AI Tab" 배지 */
-.pf-tag,
-.pf-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: hsl(224, 82%, 15%);
-  color: hsl(0, 0%, 100%);
-  font-size: 11px;
-  font-weight: var(--fw-500);
-  letter-spacing: 0.5px;
-}
+/* 썸네일 위 "NAVER AI Tab" 배지 */
 .pf-badge {
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 1;
   padding: 4px 10px;
+  border-radius: 999px;
+  background: hsl(224, 82%, 15%);
+  color: hsl(0, 0%, 100%);
+  font-size: 11px;
+  font-weight: var(--fw-500);
+  letter-spacing: 0.3px;
 }
 
 /* 영상 썸네일도 이미지처럼 */
@@ -2066,4 +2041,17 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: hsl(0, 0%, 100%);
   font-size: 12px;
   letter-spacing: 0.5px;
-} 
+}
+
+// Portfolio 탭을 누르면 그 탭의 설명만 보여주기
+const pfDescs = document.querySelectorAll("[data-pf-desc]");
+function showPfDesc(value) {
+  pfDescs.forEach(function (d) {
+    d.classList.toggle("active", d.dataset.pfDesc === value);
+  });
+}
+document.querySelectorAll("[data-filter-btn], [data-select-item]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    showPfDesc(btn.innerText.trim().toLowerCase());
+  });
+});
