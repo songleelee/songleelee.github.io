@@ -1892,3 +1892,24 @@ textarea.form-input::-webkit-resizer { display: none; }
 .service-icon-box img {
   filter: filter brightness(0);
 }
+
+/* 카드 전체를 클릭 영역으로 */
+.service-item .card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 14px;
+}
+
+.service-item {
+  transition: transform 0.2s ease;
+}
+.service-item:hover {
+  transform: translateY(-3px);
+}
+
+/* 새 아이콘 크기와 색 */
+.service-icon-box ion-icon {
+  font-size: 40px;
+  color: var(--orange-yellow-crayola);
+}
