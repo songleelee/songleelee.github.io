@@ -194,5 +194,6 @@ document.querySelectorAll("[data-filter-btn], [data-select-item]").forEach(funct
   btn.addEventListener("click", function () {
     showPfDesc(btn.innerText.trim().toLowerCase());
   });
+});
 
   
