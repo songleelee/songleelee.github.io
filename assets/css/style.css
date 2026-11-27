@@ -1965,6 +1965,8 @@ textarea.form-input::-webkit-resizer { display: none; }
   z-index: 2;
   border-radius: 14px;
 
+}
+
   /* ===== Portfolio 전체 스타일 ===== */
 
   /* ===== Portfolio: 탭 설명, 배지, 영상, 다른 플랫폼 아이콘 ===== */
@@ -2043,15 +2045,10 @@ textarea.form-input::-webkit-resizer { display: none; }
   letter-spacing: 0.5px;
 }
 
-// Portfolio 탭을 누르면 그 탭의 설명만 보여주기
-const pfDescs = document.querySelectorAll("[data-pf-desc]");
-function showPfDesc(value) {
-  pfDescs.forEach(function (d) {
-    d.classList.toggle("active", d.dataset.pfDesc === value);
-  });
-}
-document.querySelectorAll("[data-filter-btn], [data-select-item]").forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    showPfDesc(btn.innerText.trim().toLowerCase());
-  });
-});
+/* 이력서: 글머리표, 점 제거 */
+.timeline-bullets { padding-left: 18px; }
+.timeline-bullets li { list-style: disc; margin-bottom: 4px; }
+.no-dot .timeline-item::before,
+.no-dot .timeline-item::after { display: none; }
+.no-dot .timeline-list { margin-left: 0; }
+

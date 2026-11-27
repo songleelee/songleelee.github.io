@@ -182,3 +182,17 @@ document.querySelectorAll("[data-nav-link]").forEach(function (link) {
     }
   });
 });
+
+// Portfolio 탭을 누르면 그 탭의 설명만 보여주기
+const pfDescs = document.querySelectorAll("[data-pf-desc]");
+function showPfDesc(value) {
+  pfDescs.forEach(function (d) {
+    d.classList.toggle("active", d.dataset.pfDesc === value);
+  });
+}
+document.querySelectorAll("[data-filter-btn], [data-select-item]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    showPfDesc(btn.innerText.trim().toLowerCase());
+  });
+
+  
