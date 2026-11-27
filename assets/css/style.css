@@ -1964,9 +1964,10 @@ textarea.form-input::-webkit-resizer { display: none; }
   inset: 0;
   z-index: 2;
   border-radius: 14px;
-}
 
-/* 기존 필터 버튼은 숨김 (코드는 남겨둬야 스크립트 오류가 안 남) */
+  /* ===== Portfolio 전체 스타일 ===== */
+
+/* 기존 필터 버튼은 숨김 (HTML은 남겨둬야 스크립트 오류가 안 남) */
 .portfolio .filter-list,
 .portfolio .filter-select-box { display: none; }
 
@@ -1976,8 +1977,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   padding-top: 30px;
   border-top: 1px solid hsl(330, 60%, 90%);
 }
-
 .pf-title { margin-bottom: 8px; }
+.pf-sub { color: var(--white-2); margin-bottom: 6px; }
+.pf-sub-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
 .pf-desc {
   color: var(--light-gray);
@@ -1985,6 +1987,37 @@ textarea.form-input::-webkit-resizer { display: none; }
   font-weight: var(--fw-300);
   line-height: 1.6;
   margin-bottom: 22px;
+}
+
+/* 디깅클럽 캠페인 패널 */
+.pf-feature {
+  background: hsl(330, 100%, 97%);
+  border: 1px solid hsl(330, 60%, 88%);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 32px;
+}
+.pf-feature .pf-desc { margin-bottom: 18px; }
+.pf-feature .pf-alt-btn:not(.pf-red) { background: hsl(0, 0%, 100%); }
+
+/* "Campaign" 태그와 "NAVER AI Tab" 배지 */
+.pf-tag,
+.pf-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: hsl(224, 82%, 15%);
+  color: hsl(0, 0%, 100%);
+  font-size: 11px;
+  font-weight: var(--fw-500);
+  letter-spacing: 0.5px;
+}
+.pf-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 4px 10px;
 }
 
 /* 영상 썸네일도 이미지처럼 */
@@ -1996,27 +2029,41 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 .project-item > a:hover .project-img video { transform: scale(1.1); }
 
-/* SNS 바로가기 버튼 */
-.pf-links {
+/* 카드 아래 "Also on" (TikTok, 샤오홍슈) */
+.pf-alt {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 6px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
 }
-.pf-links a {
+.pf-alt-label {
+  display: inline;
+  font-size: var(--fs-8);
+  color: var(--light-gray);
+  margin-right: 2px;
+}
+.pf-alt-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
   border-radius: 999px;
   border: 1px solid hsl(330, 60%, 88%);
   background: hsl(330, 100%, 97%);
   color: hsl(224, 82%, 15%);
-  font-size: var(--fs-7);
+  font-size: 15px;
   font-weight: var(--fw-500);
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease;
 }
-.pf-links a:hover {
-  background: hsl(330, 80%, 92%);
-  transform: translateY(-2px);
-}
+.pf-alt-btn:hover { transform: translateY(-2px); }
+
+/* 샤오홍슈(RedNote): 빨간 배지 */
+.pf-alt-btn.pf-red {
+  background: hsl(354, 100%, 50%);
+  border-color: hsl(354, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+} 
