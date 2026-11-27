@@ -1914,86 +1914,54 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: var(--orange-yellow-crayola);
 }
 
-/* ===== Application Kit (다운로드 목록) ===== */
-.docs { margin-bottom: 10px; }
-
-.docs-intro {
-  color: var(--light-gray);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-300);
-  margin: -10px 0 20px;
+/* ===== 파일 다운로드 카드 (박스 형식) ===== */
+.service-list {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.docs-list {
-  display: grid;
-  gap: 14px;
-}
-
-.docs-link {
+.service-item {
+  background: hsl(330, 60%, 88%);          /* 테두리 색 */
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 20px;
-  background: hsl(330, 100%, 97%);
-  border: 1px solid hsl(330, 60%, 88%);
-  border-radius: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.docs-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px hsla(224, 82%, 15%, 0.12);
+.service-item::before {
+  background: hsl(330, 100%, 97%);         /* 카드 안쪽 연핑크 */
 }
 
-.docs-icon {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: hsl(0, 0%, 100%);
-  border: 1px solid hsl(330, 60%, 88%);
+.service-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px hsla(224, 82%, 15%, 0.15);
 }
 
-.docs-icon ion-icon {
-  font-size: 24px;
+.service-icon-box { margin: 0; }
+
+.service-icon-box ion-icon {
+  font-size: 36px;
+  color: hsl(224, 82%, 15%);               /* 남색 */
+}
+
+.service-item-title { margin-bottom: 4px; }
+
+.service-item-text { color: var(--light-gray); }   /* 잘 보이는 글씨색 */
+
+/* 오른쪽 위 다운로드 아이콘 */
+.service-item .dl-icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 22px;
   color: hsl(224, 82%, 15%);
 }
 
-.docs-info { flex: 1; min-width: 0; }
-
-.docs-name {
-  color: var(--white-2);
-  margin-bottom: 2px;
-}
-
-.docs-desc {
-  color: var(--light-gray);
-  font-size: var(--fs-7);
-  font-weight: var(--fw-300);
-  line-height: 1.5;
-}
-
-.docs-btn {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: hsl(224, 82%, 15%);
-  color: hsl(0, 0%, 100%);
-  font-size: var(--fs-7);
-  font-weight: var(--fw-500);
-  white-space: nowrap;
-  transition: background 0.2s ease;
-}
-
-.docs-link:hover .docs-btn { background: hsl(224, 60%, 40%); }
-
-/* 모바일: 버튼을 아래로 */
-@media (max-width: 579px) {
-  .docs-link { flex-wrap: wrap; }
-  .docs-btn { width: 100%; justify-content: center; }
+/* 카드 전체를 누르면 다운로드 */
+.service-item .card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 14px;
 }
