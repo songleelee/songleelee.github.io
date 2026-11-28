@@ -256,4 +256,25 @@ document.querySelectorAll("[data-filter-btn], [data-select-item]").forEach(funct
     if (e.key === "ArrowRight") next.click();
   });
 })();
+
+/* ===== 소제목 자동 숨김 (탭 이름과 소제목의 data-category가 같을 때만 표시) ===== */
+(function () {
+  const heads = document.querySelectorAll(".ai-section-title");
+  const tabs = document.querySelectorAll("[data-filter-btn], [data-select-item]");
+
+  function sync(value) {
+    heads.forEach(function (h) {
+      const show = (value === "all" || value === h.dataset.category);
+      h.style.display = show ? "block" : "none";
+    });
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      sync(t.innerText.trim().toLowerCase());
+    });
+  });
+
+  sync("all");
+})();
   
