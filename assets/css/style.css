@@ -2087,3 +2087,28 @@ textarea.form-input::-webkit-resizer { display: none; }
 .rv-nav:disabled { opacity: .25; cursor: default; }
 @media (max-width: 580px) { .rv-stage { padding: 0 8px 16px; } .rv-nav { width: 34px; height: 52px; } }
 
+/* AI Tool Usage: 구역 소제목 + 간격 */
+.ai-section-title {
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: 6px 0 0;
+}
+.ai-section-title h4 {
+  color: hsl(224, 82%, 15%);
+  font-size: 15px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 1px solid hsl(330, 60%, 88%);
+}
+.ai-section-gap { margin-top: 40px; }
+
+.ai-section-title p {
+  color: hsl(224, 30%, 40%);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+
+
